@@ -1,0 +1,32 @@
+{
+  "name": "portfolio",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "test": "jest --watch"
+  },
+  "dependencies": {
+    "next": "^10.0.0",
+    "react": "16.13.1",
+    "react-dom": "16.13.1",
+    "styled-components": "^5.1.1"
+  },
+  "devDependencies": {
+    "@sanity/client": "^1.150.7",
+    "@sanity/image-url": "^0.140.19",
+    "@types/jest": "^26.0.14",
+    "@types/node": "^14.6.0",
+    "@types/react": "^16.9.46",
+    "@types/styled-components": "^5.1.2",
+    "babel-jest": "^26.5.2",
+    "babel-plugin-styled-components": "^1.11.1",
+    "file-loader": "^6.0.0",
+    "jest": "^26.5.2",
+    "request": "^2.88.2",
+    "typescript": "^3.9.7",
+    "url-loader": "^4.1.0"
+  }
+}

@@ -1,0 +1,12 @@
+* use lingui
+* have some enpty .po files
+* at build time get all translations and asynchrounously create keys and add translations for each locale.
+  If a locale doesn't have anything in their own language, use default english.  
+  If a locale doesn't have a specific english translation, use default english.
+  
+Other approach
+* Simply have each page every translation (for that locale) as a prop. Then there is no file thing.
+* If a locale doesn't have anything in their own language, use default english.  
+* If a locale doesn't have a specific english translation, use default english.
+* Guess there won't be a flicker when changing pages client side, as long as we use a 'language' hook.
+  That is because when changing language client side, the serverside rendered version is not used.
