@@ -1,4 +1,4 @@
-import { CommercialDriver } from 'src/data/commercial-driver/commercialDriver.types';
+import { CommercialDriver } from 'src/api/commercial-driver/commercialDriver.types';
 import { Trans } from 'src/lib/i18n';
 interface ICommercialDriverTemplate {
   commercialDriver: CommercialDriver;
@@ -11,12 +11,14 @@ const CommercialDriverTemplate = ({
     <div>
       {/* <Trans
         translations={{
+          na: 
           default: hero.title.en,
           da: hero.title.dk,
           no: hero.title.no,
         }}
       /> */}
-      {hero.title.en}
+      {/* {hero.title.translations.} */}
+      <Trans translations={hero.title.translations} />
     </div>
   );
 };

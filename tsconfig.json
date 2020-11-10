@@ -21,7 +21,10 @@
     "**/*.tsx",
     "src/lib/imageProcessing/processImagearchilved.txt",
     "src/pages/apiArchived/preview.txt",
-    "src/config/localization.js"
+    "src/config/localization.js",
+    "src/lib/i18n/useI18n.txt",
+    "src/lib/i18n/I18nContext.txt",
+    "src/lib/i18n/I18nProvider.txt"
   ],
-  "exclude": ["node_modules"]
+  "exclude": ["node_modules", ".next", "out"]
 }

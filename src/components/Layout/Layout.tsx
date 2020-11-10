@@ -1,16 +1,14 @@
 import React, { ReactNode } from 'react';
-import Navigation from 'src/components/Navigation';
+import Header from 'src/components/Header';
 
 interface ILayout {
   children: ReactNode;
 }
 
-const TRANSITION_DURATION = 0.5;
-
 const Layout = ({ children }: ILayout) => {
   return (
     <div>
-      <Navigation />
+      <Header />
       {children}
     </div>
   );

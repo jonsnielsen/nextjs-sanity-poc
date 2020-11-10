@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
-import { getCommercialDriver } from 'src/data/commercial-driver/commercialDriver.api';
-import { CommercialDriver } from 'src/data/commercial-driver/commercialDriver.types';
+import { getCommercialDriver } from 'src/api/commercial-driver/commercialDriver.api';
+import { CommercialDriver } from 'src/api/commercial-driver/commercialDriver.types';
 import CommercialDriverTemplate from 'src/templates/CommercialDriver';
+import { Region, defaultRegionId } from 'src/data/region';
 
 type Query = {
   slug: string;
@@ -22,7 +23,11 @@ const CommercialDriverPreviewPage = () => {
       // if not reroute to 404/error page
     }
     (async () => {
-      const fetchedCommercialDriver = await getCommercialDriver(slug, secret);
+      const fetchedCommercialDriver = await getCommercialDriver(
+        slug,
+        defaultRegionId,
+        secret,
+      );
       if (!commercialDriver) {
         // if not reroute to 404/error page
       }

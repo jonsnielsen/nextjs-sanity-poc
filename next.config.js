@@ -1,9 +1,9 @@
-const { regions } = require('./src/config/localization');
+// const { regions } = require('./src/config/localization');
 module.exports = {
   i18n: {
     // These are all the locales you want to support in
     // your application
-    locales: regions,
+    locales: ['na', 'dk', 'no', 'eu'],
     // This is the default locale you want to be used when visiting
     // a non-locale prefixed path e.g. `/hello`
     defaultLocale: 'na',

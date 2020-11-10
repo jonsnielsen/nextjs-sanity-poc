@@ -1,5 +1,5 @@
 * use lingui
-* have some enpty .po files
+* have some empty .po files
 * at build time get all translations and asynchrounously create keys and add translations for each locale.
   If a locale doesn't have anything in their own language, use default english.  
   If a locale doesn't have a specific english translation, use default english.
@@ -10,3 +10,8 @@ Other approach
 * If a locale doesn't have a specific english translation, use default english.
 * Guess there won't be a flicker when changing pages client side, as long as we use a 'language' hook.
   That is because when changing language client side, the serverside rendered version is not used.
+  
+Each page should only have the translations of that specific region.
+
+
+ // DEAR JONATHAN. NEXT STEP IS TO ADD defaultState in `getStaticProps` in `_app.js` so redux can use the langugage id in initial state.

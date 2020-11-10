@@ -9,9 +9,11 @@
     "test": "jest --watch"
   },
   "dependencies": {
+    "@reduxjs/toolkit": "^1.4.0",
     "next": "^10.0.0",
     "react": "16.13.1",
     "react-dom": "16.13.1",
+    "react-redux": "^7.2.2",
     "styled-components": "^5.1.1"
   },
   "devDependencies": {
@@ -20,11 +22,13 @@
     "@types/jest": "^26.0.14",
     "@types/node": "^14.6.0",
     "@types/react": "^16.9.46",
+    "@types/react-redux": "^7.1.11",
     "@types/styled-components": "^5.1.2",
     "babel-jest": "^26.5.2",
     "babel-plugin-styled-components": "^1.11.1",
     "file-loader": "^6.0.0",
     "jest": "^26.5.2",
+    "jest-watch-typeahead": "^0.6.1",
     "request": "^2.88.2",
     "typescript": "^3.9.7",
     "url-loader": "^4.1.0"
