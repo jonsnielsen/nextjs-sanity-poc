@@ -39,16 +39,28 @@ const settingsSlice = createSlice({
   },
 });
 
-export const handleChangeRegion = (regionId: RegionId): AppThunk => async (
-  dispatch,
-  getState,
-) => {
+export const handleLocaleChange = (
+  regionId: RegionId,
+  languageId: LanguageId,
+): AppThunk => async (dispatch, getState) => {
   const { regionId: prevRegionId } = getState().settings;
-  if (prevRegionId !== regionId) {
-    Router.push({ pathname: Router.pathname, query: Router.query }, null, {
-      locale: regionId,
-    });
+
+  if (prevRegionId == regionId) {
+    return;
   }
+
+  Router.push(
+    {
+      pathname: Router.router.pathname,
+      query: Router.router.query,
+    },
+    {},
+    {
+      locale: regionId,
+    },
+  );
+  dispatch(changeRegion(regionId));
+  dispatch(changeLanguage(languageId));
 };
 
 export const { changeLanguage, changeRegion } = settingsSlice.actions;

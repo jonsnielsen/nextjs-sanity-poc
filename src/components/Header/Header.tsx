@@ -1,7 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import RegionSelector from './RegionSelector';
-import LanguageSelector from './LanguageSelector';
+import LocaleSelector from 'src/components/LocaleSelector';
 import Link from 'next/link';
 
 const Navigation = () => {
@@ -17,8 +16,7 @@ const Navigation = () => {
         <a>about</a>
       </Link>
       <LocaleSelectorWrapper>
-        <RegionSelector />
-        <LanguageSelector />
+        <LocaleSelector />
       </LocaleSelectorWrapper>
     </StyledHeader>
   );
@@ -31,8 +29,6 @@ const StyledHeader = styled.header`
   justify-content: space-between;
 `;
 
-const LocaleSelectorWrapper = styled.div`
-  background-color: blue;
-`;
+const LocaleSelectorWrapper = styled.div``;
 
 export default Navigation;
