@@ -2,11 +2,11 @@ import {
   CommercialDriver,
   CommercialDriverDTO,
   CommercialDriverPath,
-} from './commercialDriver.types';
-import { gqlFetch } from '../api';
+} from './commercialDriverTypes';
+import { gqlFetch } from '../../api/api';
 import { sanityClient } from 'src/lib/sanity';
 import { RegionId } from 'src/data/region';
-import { commercialDriverDTOToCommercialDriver } from './commercialDriver.utils';
+import { commercialDriverDTOToCommercialDriver } from './commercialDriverUtils';
 
 const commercialDriverSlugsQuery = `*[_type == "commercialDriver"] { slug, meta }`;
 
@@ -41,6 +41,7 @@ export const getCommercialDriver = async (
       slug,
     },
   );
+  console.log({ commercialDriverDTO });
   const commercialDriver = commercialDriverDTOToCommercialDriver(
     commercialDriverDTO,
     regionId,

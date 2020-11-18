@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
-import { getCommercialDriver } from 'src/api/commercial-driver/commercialDriver.api';
+import { getCommercialDriver } from 'src/domain/CommercialDriver/commercialDriverApi';
 import { CommercialDriver } from 'src/api/commercial-driver/commercialDriver.types';
-import CommercialDriverTemplate from 'src/templates/CommercialDriver';
+import CommercialDriverTemplate from 'src/domain/CommercialDriver/CommercialDriverTemplate';
 import { Region, defaultRegionId } from 'src/data/region';
 
 type Query = {

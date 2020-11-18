@@ -8,6 +8,7 @@ import commercialDriver from './commercial-driver/commercialDriver';
 import commercialDriverHero from './commercial-driver/commercialDriverHero';
 import commercialDriverMeta from './commercial-driver/commercialDriverMeta';
 import localeString from './localeString';
+import localeImage from './localeImage';
 import regions from './regions';
 
 // Then we give our schema to the builder and provide the result to Sanity
@@ -22,5 +23,6 @@ export default createSchema({
     commercialDriverMeta,
     regions,
     localeString,
+    localeImage,
   ]),
 });

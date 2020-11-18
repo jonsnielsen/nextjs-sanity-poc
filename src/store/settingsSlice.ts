@@ -43,24 +43,28 @@ export const handleLocaleChange = (
   regionId: RegionId,
   languageId: LanguageId,
 ): AppThunk => async (dispatch, getState) => {
-  const { regionId: prevRegionId } = getState().settings;
+  const {
+    regionId: prevRegionId,
+    languageId: prevLanguageId,
+  } = getState().settings;
 
-  if (prevRegionId == regionId) {
-    return;
+  if (prevRegionId !== regionId) {
+    Router.push(
+      {
+        pathname: Router.router.pathname,
+        query: Router.router.query,
+      },
+      {},
+      {
+        locale: regionId,
+      },
+    );
+    dispatch(changeRegion(regionId));
   }
 
-  Router.push(
-    {
-      pathname: Router.router.pathname,
-      query: Router.router.query,
-    },
-    {},
-    {
-      locale: regionId,
-    },
-  );
-  dispatch(changeRegion(regionId));
-  dispatch(changeLanguage(languageId));
+  if (languageId !== prevLanguageId) {
+    dispatch(changeLanguage(languageId));
+  }
 };
 
 export const { changeLanguage, changeRegion } = settingsSlice.actions;

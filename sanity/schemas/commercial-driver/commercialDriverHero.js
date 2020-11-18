@@ -10,9 +10,14 @@ export default {
       type: 'localeString',
     },
     {
-      name: 'text',
-      title: 'Text',
+      name: 'description',
+      title: 'Description',
       type: 'localeString',
+    },
+    {
+      name: 'backgroundImage',
+      title: 'Background Image',
+      type: 'localeImage',
     },
   ],
 };

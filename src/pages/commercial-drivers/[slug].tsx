@@ -3,9 +3,9 @@ import { GetStaticProps, GetStaticPaths } from 'next';
 import {
   getAllCommercialDriverPaths,
   getCommercialDriver,
-} from 'src/api/commercial-driver/commercialDriver.api';
+} from 'src/domain/CommercialDriver/commercialDriverApi';
 import { CommercialDriver } from 'src/api/commercial-driver/commercialDriver.types';
-import CommercialDriverTemplate from 'src/templates/CommercialDriver';
+import CommercialDriverTemplate from 'src/domain/CommercialDriver/CommercialDriverTemplate';
 import { Region, RegionId } from 'src/data/region';
 // import { useI18n, I18nProvider } from 'src/lib/i18n';
 

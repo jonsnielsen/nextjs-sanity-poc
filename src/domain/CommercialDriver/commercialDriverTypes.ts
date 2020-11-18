@@ -1,6 +1,7 @@
 import { Language } from 'src/data/language';
 import { RegionId } from 'src/data/region';
 import { Translations } from 'src/lib/i18n/Trans';
+import { RegionTranslations } from 'src/types/translations';
 
 export type CommercialDriverDTO = {
   slug: {
@@ -10,27 +11,10 @@ export type CommercialDriverDTO = {
     regions: string[];
   };
   hero: {
-    title: {
-      _type: string;
-      na: {
-        en: string;
-      };
-      dk: {
-        en: string;
-        da: string;
-      };
-      no: {
-        no: string;
-        en: string;
-      };
-      eu: {
-        en: string;
-      };
-    };
+    title: RegionTranslations;
+    description: RegionTranslations;
   };
 };
-
-export type LocaleString = Partial<Record<RegionId, Translations>>;
 
 export type CommercialDriver = {
   slug: {
@@ -40,10 +24,8 @@ export type CommercialDriver = {
     regions: string[];
   };
   hero: {
-    title: {
-      _type: string;
-      translations: Translations;
-    };
+    title: Translations;
+    description: Translations;
   };
 };
 

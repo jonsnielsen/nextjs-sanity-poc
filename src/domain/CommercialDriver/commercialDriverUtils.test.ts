@@ -1,13 +1,14 @@
 import { RegionId } from 'src/data/region';
-import { localeStringToTranslation } from './commercialDriver.utils';
-import { LocaleString } from './commercialDriver.types';
+import { localeToTranslations } from './commercialDriverUtils';
+import { RegionTranslations } from 'src/types/translations';
 import { Translations } from 'src/lib/i18n/Trans';
 
 test('localeStringToTranslation - Only danish regions with only, has only danish language', async () => {
-  const localeString: LocaleString = {
+  const localeString: RegionTranslations = {
+    _type: 'localeString',
     dk: { da: 'DK danish' },
   };
-  const result = localeStringToTranslation(localeString, RegionId.Dk);
+  const result = localeToTranslations(localeString, RegionId.Dk);
   const expected: Translations = {
     da: 'DK danish',
   };
@@ -16,10 +17,11 @@ test('localeStringToTranslation - Only danish regions with only, has only danish
 });
 
 test('localeStringToTranslation - Only danish regions with da, en - has DA and EN ', async () => {
-  const localeString: LocaleString = {
+  const localeStringDTO: RegionTranslations = {
+    _type: 'localeString',
     dk: { da: 'DK danish', en: 'DK english' },
   };
-  const result = localeStringToTranslation(localeString, RegionId.Dk);
+  const result = localeToTranslations(localeStringDTO, RegionId.Dk);
   const expected: Translations = {
     da: 'DK danish',
     en: 'DK english',
@@ -29,11 +31,12 @@ test('localeStringToTranslation - Only danish regions with da, en - has DA and E
 });
 
 test('localeStringToTranslation - DK and NA region with DK only DA and using NA En', async () => {
-  const localeString: LocaleString = {
+  const localeStringDTO: RegionTranslations = {
+    _type: 'localeString',
     dk: { da: 'DK danish' },
     na: { en: 'NA english' },
   };
-  const result = localeStringToTranslation(localeString, RegionId.Dk);
+  const result = localeToTranslations(localeStringDTO, RegionId.Dk);
   const expected: Translations = {
     da: 'DK danish',
     en: 'NA english',
