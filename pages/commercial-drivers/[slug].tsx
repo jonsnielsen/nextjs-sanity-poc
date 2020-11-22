@@ -4,7 +4,8 @@ import {
   getAllCommercialDriverPaths,
   getCommercialDriver,
 } from 'src/domain/CommercialDriver/commercialDriverApi';
-import { CommercialDriver } from 'src/api/commercial-driver/commercialDriver.types';
+import { CommercialDriver } from 'src/domain/CommercialDriver/commercialDriverTypes';
+import { imageTranslationsToReact } from 'src/domain/CommercialDriver/commercialDriverUtils';
 import CommercialDriverTemplate from 'src/domain/CommercialDriver/CommercialDriverTemplate';
 import { Region, RegionId } from 'src/data/region';
 // import { useI18n, I18nProvider } from 'src/lib/i18n';
@@ -17,6 +18,10 @@ const CommercialDriverPage = ({
   commercialDriver,
   region,
 }: ICommercialDriverPage) => {
+  // Map commercial driver and normalize
+  // commercialDriver.hero.backgroundImage = imageTranslationsToReact(
+  //   commercialDriver.hero.backgroundImage,
+  // );
   return <CommercialDriverTemplate commercialDriver={commercialDriver} />;
 };
 

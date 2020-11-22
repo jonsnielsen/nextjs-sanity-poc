@@ -1,15 +1,14 @@
 import { RegionId } from 'src/data/region';
 import { localeToTranslations } from './commercialDriverUtils';
-import { RegionTranslations } from 'src/types/translations';
-import { Translations } from 'src/lib/i18n/Trans';
+import { RegionTranslations, Translations } from 'src/types/translations';
 
 test('localeStringToTranslation - Only danish regions with only, has only danish language', async () => {
-  const localeString: RegionTranslations = {
+  const localeString: RegionTranslations<string> = {
     _type: 'localeString',
     dk: { da: 'DK danish' },
   };
-  const result = localeToTranslations(localeString, RegionId.Dk);
-  const expected: Translations = {
+  const result = localeToTranslations<string>(localeString, RegionId.Dk);
+  const expected: Translations<string> = {
     da: 'DK danish',
   };
 
@@ -17,12 +16,12 @@ test('localeStringToTranslation - Only danish regions with only, has only danish
 });
 
 test('localeStringToTranslation - Only danish regions with da, en - has DA and EN ', async () => {
-  const localeStringDTO: RegionTranslations = {
+  const localeStringDTO: RegionTranslations<string> = {
     _type: 'localeString',
     dk: { da: 'DK danish', en: 'DK english' },
   };
   const result = localeToTranslations(localeStringDTO, RegionId.Dk);
-  const expected: Translations = {
+  const expected: Translations<string> = {
     da: 'DK danish',
     en: 'DK english',
   };
@@ -31,13 +30,13 @@ test('localeStringToTranslation - Only danish regions with da, en - has DA and E
 });
 
 test('localeStringToTranslation - DK and NA region with DK only DA and using NA En', async () => {
-  const localeStringDTO: RegionTranslations = {
+  const localeStringDTO: RegionTranslations<string> = {
     _type: 'localeString',
     dk: { da: 'DK danish' },
     na: { en: 'NA english' },
   };
   const result = localeToTranslations(localeStringDTO, RegionId.Dk);
-  const expected: Translations = {
+  const expected: Translations<string> = {
     da: 'DK danish',
     en: 'NA english',
   };

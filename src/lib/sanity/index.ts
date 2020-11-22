@@ -1,1 +1,2 @@
-export { default as sanityClient } from './sanity.client';
+export { default as sanityClient } from './sanityClient';
+export { urlFor } from './sanityImageBuilder';

@@ -1,13 +1,10 @@
-import { LanguageId } from 'src/data/language';
-// import useI18n from './useI18n';
 import { useSelector } from 'react-redux';
 import { RootState } from 'src/store';
-import { useState, useEffect, ReactNode } from 'react';
+import { useState, useEffect } from 'react';
+import { Translations } from 'src/types/translations';
 
-// The translation HAS to be of type any, otherwise some place typescript complains that ReactNode cannot be used in jsx.
-export type Translations = Partial<Record<LanguageId, any>>;
 export interface ITrans {
-  translations: Translations;
+  translations: Translations<any>; // HAS to be of type any, otherwise some place typescript complains that ReactNode cannot be used in jsx.
 }
 
 const Trans = ({ translations }: ITrans) => {
@@ -18,11 +15,11 @@ const Trans = ({ translations }: ITrans) => {
     if (translations[languageId]) {
       setTranslation(translations[languageId]);
     }
-  });
-
+  }, [languageId, translations]);
   // TODO: Throw error if there is no translation (ie., if we expect that there ALWAYS should be a translation)
 
-  return translation;
+  console.log(translations);
+  return translation || null;
 };
 
 export default Trans;

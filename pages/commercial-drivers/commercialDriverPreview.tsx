@@ -1,9 +1,11 @@
 import React, { useEffect, useState } from 'react';
+import { GetStaticProps } from 'next';
 import { useRouter } from 'next/router';
 import { getCommercialDriver } from 'src/domain/CommercialDriver/commercialDriverApi';
-import { CommercialDriver } from 'src/api/commercial-driver/commercialDriver.types';
+import { CommercialDriver } from 'src/domain/CommercialDriver/commercialDriverTypes';
 import CommercialDriverTemplate from 'src/domain/CommercialDriver/CommercialDriverTemplate';
-import { Region, defaultRegionId } from 'src/data/region';
+import { useSelector } from 'react-redux';
+import { RootState } from 'src/store';
 
 type Query = {
   slug: string;
@@ -15,31 +17,35 @@ const CommercialDriverPreviewPage = () => {
     commercialDriver,
     setCommercialDriver,
   ] = useState<CommercialDriver | null>(null);
+  const { regionId } = useSelector((state: RootState) => state.settings);
   const query = useRouter().query as Query;
   const { secret, slug } = query;
 
   useEffect(() => {
     if (!slug || !secret) {
-      // if not reroute to 404/error page
+      return;
     }
     (async () => {
       const fetchedCommercialDriver = await getCommercialDriver(
         slug,
-        defaultRegionId,
+        regionId,
         secret,
       );
-      if (!commercialDriver) {
-        // if not reroute to 404/error page
-      }
       setCommercialDriver(fetchedCommercialDriver);
     })();
-  }, [slug, secret]);
+  }, [slug, secret, regionId]);
 
   if (!commercialDriver) {
     return null;
   }
 
   return <CommercialDriverTemplate commercialDriver={commercialDriver} />;
+};
+
+export const getStaticProps: GetStaticProps = async () => {
+  return {
+    props: {},
+  };
 };
 
 export default CommercialDriverPreviewPage;

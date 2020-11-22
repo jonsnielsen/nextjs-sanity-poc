@@ -1,18 +1,17 @@
 import { LanguageId } from './language';
 
 export enum RegionId {
+  Default = 'na',
   Na = 'na',
   Dk = 'dk',
-  No = 'no',
+  De = 'de',
   Eu = 'eu',
 }
-
-export const defaultRegionId = RegionId.Na;
 
 export enum RegionName {
   NorthAmerica = 'North America',
   Denmark = 'Denmark',
-  Norway = 'Norway',
+  Germany = 'Germany',
   Europe = 'Europe',
 }
 
@@ -31,17 +30,17 @@ export const regionsById: Record<RegionId, Region> = {
   [RegionId.Dk]: {
     id: RegionId.Dk,
     name: RegionName.Denmark,
-    languageIds: [LanguageId.Da, LanguageId.En],
+    languageIds: [LanguageId.Da, LanguageId.DaEn],
   },
-  [RegionId.No]: {
-    id: RegionId.No,
-    name: RegionName.Norway,
-    languageIds: [LanguageId.En],
+  [RegionId.De]: {
+    id: RegionId.De,
+    name: RegionName.Germany,
+    languageIds: [LanguageId.De, LanguageId.DeEn],
   },
   [RegionId.Eu]: {
     id: RegionId.Eu,
     name: RegionName.Europe,
-    languageIds: [LanguageId.En],
+    languageIds: [LanguageId.EnEu],
   },
 };
 

@@ -1,7 +1,5 @@
-import { Language } from 'src/data/language';
-import { RegionId } from 'src/data/region';
-import { Translations } from 'src/lib/i18n/Trans';
-import { RegionTranslations } from 'src/types/translations';
+import { ImageDTO, Image } from 'src/types/image';
+import { RegionTranslations, Translations } from 'src/types/translations';
 
 export type CommercialDriverDTO = {
   slug: {
@@ -11,21 +9,17 @@ export type CommercialDriverDTO = {
     regions: string[];
   };
   hero: {
-    title: RegionTranslations;
-    description: RegionTranslations;
+    title: RegionTranslations<string>;
+    description: RegionTranslations<string>;
+    backgroundImage: RegionTranslations<ImageDTO>;
   };
 };
 
 export type CommercialDriver = {
-  slug: {
-    current: string;
-  };
-  meta: {
-    regions: string[];
-  };
   hero: {
-    title: Translations;
-    description: Translations;
+    title: Translations<string>;
+    description: Translations<string>;
+    backgroundImage: Translations<Image>;
   };
 };
 

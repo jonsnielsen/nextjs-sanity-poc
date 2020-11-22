@@ -12,6 +12,3 @@ Other approach
   That is because when changing language client side, the serverside rendered version is not used.
   
 Each page should only have the translations of that specific region.
-
-
- // DEAR JONATHAN. NEXT STEP IS TO ADD defaultState in `getStaticProps` in `_app.js` so redux can use the langugage id in initial state.

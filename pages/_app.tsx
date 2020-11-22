@@ -18,7 +18,8 @@ const MyApp: NextComponentType<AppContext, AppInitialProps, AppProps> = ({
   // reduxStore,
 }) => {
   const [reduxStore] = useState(() => {
-    const regionId = router.locale as RegionId;
+    const regionId = (router.locale as RegionId) || RegionId.Default;
+    console.log({ regionId });
     const languageId = regionsById[regionId].languageIds[0];
 
     const initialReduxState: InitialState = {
@@ -27,8 +28,6 @@ const MyApp: NextComponentType<AppContext, AppInitialProps, AppProps> = ({
 
     return getReduxStore(initialReduxState);
   });
-
-  console.log('change in app');
 
   return (
     <ThemeProvider theme={theme}>
@@ -42,23 +41,5 @@ const MyApp: NextComponentType<AppContext, AppInitialProps, AppProps> = ({
     </ThemeProvider>
   );
 };
-
-// MyApp.getInitialProps = async (appContext: AppContext) => {
-//   const { router } = appContext;
-//   // calls page's `getInitialProps` and fills `appProps.pageProps`
-//   const appProps = await App.getInitialProps(appContext);
-
-//   console.log('getInitialProps run');
-//   const regionId = getRegionIdFromPath(router.asPath);
-//   console.log({ routerThing: router.asPath });
-//   console.log('regionIdFrom Path: ', regionId);
-
-//   const initialReduxState: InitialState = {
-//     settings: { languageId: LanguageId.Da, regionId: RegionId.Dk },
-//   };
-//   const reduxStore = getReduxStore(initialReduxState);
-
-//   return { reduxStore, ...appProps };
-// };
 
 export default MyApp;

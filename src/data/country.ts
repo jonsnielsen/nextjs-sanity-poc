@@ -1,14 +1,14 @@
 import { RegionId } from 'src/data/region';
 
 export enum CountryId {
-  No = 'no',
+  De = 'de',
   Dk = 'dk',
   USA = 'usa',
   It = 'it',
 }
 
 export enum CountryName {
-  Norway = 'Norway',
+  Germany = 'Germany',
   Denmark = 'Denmark',
   USA = 'USA',
   Italy = 'Italy',
@@ -26,10 +26,10 @@ export const countriesById: Record<CountryId, Country> = {
     name: CountryName.Denmark,
     regionId: RegionId.Dk,
   },
-  [CountryId.No]: {
-    id: CountryId.No,
-    name: CountryName.Norway,
-    regionId: RegionId.No,
+  [CountryId.De]: {
+    id: CountryId.De,
+    name: CountryName.Germany,
+    regionId: RegionId.De,
   },
   [CountryId.USA]: {
     id: CountryId.USA,

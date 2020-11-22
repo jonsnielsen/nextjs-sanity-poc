@@ -1,20 +1,8 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { defaultLanguageId, LanguageId } from 'src/data/language';
-import { defaultRegionId, RegionId } from 'src/data/region';
+import { LanguageId } from 'src/data/language';
+import { RegionId } from 'src/data/region';
 import Router from 'next/router';
 import { AppThunk } from './index';
-
-// const defaultRegionId = regions.allIds[0];
-// const defaultRegion = regions.byId[defaultRegionId];
-// const { defaultCountryId } = defaultRegion;
-// const defaultLanguageId = defaultRegion.languageIds[0];
-
-// const defaultState = {
-//   languageId: defaultLanguageId,
-//   regionId: defaultRegionId,
-//   countryId: defaultCountryId,
-//   idCountryId: null,
-// };
 
 type SettingsState = {
   languageId: LanguageId;
@@ -22,8 +10,8 @@ type SettingsState = {
 };
 
 const initialState: SettingsState = {
-  languageId: defaultLanguageId,
-  regionId: defaultRegionId,
+  languageId: LanguageId.Default,
+  regionId: RegionId.Default,
 };
 
 const settingsSlice = createSlice({
@@ -49,12 +37,15 @@ export const handleLocaleChange = (
   } = getState().settings;
 
   if (prevRegionId !== regionId) {
+    console.log({ queryyy: Router.router.query });
     Router.push(
       {
         pathname: Router.router.pathname,
         query: Router.router.query,
       },
-      {},
+      {
+        query: Router.router.query,
+      },
       {
         locale: regionId,
       },

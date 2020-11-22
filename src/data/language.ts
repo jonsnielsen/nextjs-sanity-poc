@@ -1,16 +1,18 @@
 export enum LanguageId {
+  Default = 'en',
   En = 'en',
+  EnEu = 'enEu',
   Da = 'da',
-  No = 'no',
+  DaEn = 'daEn',
+  De = 'de',
+  DeEn = 'deEn',
 }
-
-export const defaultLanguageId = LanguageId.En;
 
 export enum LanguageName {
   Default = 'English',
   English = 'English',
   Danish = 'Danish',
-  Norwegian = 'Norwegian',
+  German = 'German',
 }
 
 export type Language = {
@@ -23,12 +25,24 @@ export const languagesById: Record<LanguageId, Language> = {
     id: LanguageId.En,
     name: LanguageName.English,
   },
+  [LanguageId.EnEu]: {
+    id: LanguageId.EnEu,
+    name: LanguageName.English,
+  },
   [LanguageId.Da]: {
     id: LanguageId.Da,
     name: LanguageName.Danish,
   },
-  [LanguageId.No]: {
-    id: LanguageId.No,
-    name: LanguageName.Norwegian,
+  [LanguageId.DaEn]: {
+    id: LanguageId.DaEn,
+    name: LanguageName.English,
+  },
+  [LanguageId.De]: {
+    id: LanguageId.De,
+    name: LanguageName.German,
+  },
+  [LanguageId.DeEn]: {
+    id: LanguageId.DeEn,
+    name: LanguageName.English,
   },
 };

@@ -1,5 +1,5 @@
 import { CommercialDriver } from './commercialDriverTypes';
-import CommercialDriverHero from 'src/organisms/CommercialDriverHero';
+import CommercialDriverHero from 'src/domain/CommercialDriver/CommercialDriverHero';
 
 interface ICommercialDriverTemplate {
   commercialDriver: CommercialDriver;
@@ -10,7 +10,7 @@ const CommercialDriverTemplate = ({
   const { hero } = commercialDriver;
   return (
     <div>
-      <CommercialDriverHero title={hero.title} description={hero.description} />
+      <CommercialDriverHero {...hero} />
     </div>
   );
 };

@@ -3,7 +3,7 @@ import {
   CommercialDriverDTO,
   CommercialDriverPath,
 } from './commercialDriverTypes';
-import { gqlFetch } from '../../api/api';
+import { gqlFetch } from '../../lib/api/api';
 import { sanityClient } from 'src/lib/sanity';
 import { RegionId } from 'src/data/region';
 import { commercialDriverDTOToCommercialDriver } from './commercialDriverUtils';
@@ -41,7 +41,6 @@ export const getCommercialDriver = async (
       slug,
     },
   );
-  console.log({ commercialDriverDTO });
   const commercialDriver = commercialDriverDTOToCommercialDriver(
     commercialDriverDTO,
     regionId,
