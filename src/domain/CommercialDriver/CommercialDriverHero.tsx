@@ -1,6 +1,6 @@
 import { CommercialDriver } from 'src/domain/CommercialDriver/commercialDriverTypes';
-import { Trans } from 'src/lib/i18n';
-import { imageTranslationsToReact } from './commercialDriverUtils';
+import { Trans, useTranslation } from 'src/lib/i18n';
+import Image from 'src/components/Image';
 
 type ICommercialDriverHero = CommercialDriver['hero'];
 
@@ -9,15 +9,23 @@ const CommercialDriverHero = ({
   description,
   backgroundImage,
 }: ICommercialDriverHero) => {
-  const key = Math.random().toString();
+  const transBackgroundImage = useTranslation(backgroundImage);
+  const transTitle = useTranslation(title);
+  const transDescription = useTranslation(description);
+
   return (
     <div>
-      <Trans translations={title} />
-      <Trans translations={description} />
-      <Trans
-        key={key}
-        translations={imageTranslationsToReact(backgroundImage)}
-      />
+      <h1>
+        {/* <Trans translations={title} /> */}
+        {transTitle}
+      </h1>
+
+      <p>
+        {/* <Trans translations={description} /> */}
+        {transDescription}
+      </p>
+
+      <Image src={transBackgroundImage.src} alt={transBackgroundImage.alt} />
     </div>
   );
 };

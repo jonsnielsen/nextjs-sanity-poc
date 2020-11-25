@@ -19,7 +19,6 @@ const MyApp: NextComponentType<AppContext, AppInitialProps, AppProps> = ({
 }) => {
   const [reduxStore] = useState(() => {
     const regionId = (router.locale as RegionId) || RegionId.Default;
-    console.log({ regionId });
     const languageId = regionsById[regionId].languageIds[0];
 
     const initialReduxState: InitialState = {

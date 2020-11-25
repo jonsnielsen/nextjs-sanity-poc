@@ -8,11 +8,7 @@ const CommercialDriverTemplate = ({
   commercialDriver,
 }: ICommercialDriverTemplate) => {
   const { hero } = commercialDriver;
-  return (
-    <div>
-      <CommercialDriverHero {...hero} />
-    </div>
-  );
+  return <CommercialDriverHero {...hero} />;
 };
 
 export default CommercialDriverTemplate;

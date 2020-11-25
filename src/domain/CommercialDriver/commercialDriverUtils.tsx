@@ -1,6 +1,5 @@
-import { ReactNode } from 'react';
 import { LanguageId, languagesById, LanguageName } from 'src/data/language';
-import { RegionId } from 'src/data/region';
+import { RegionId, regionsById } from 'src/data/region';
 import { CommercialDriverDTO, CommercialDriver } from './commercialDriverTypes';
 import { RegionTranslations, Translations } from 'src/types/translations';
 import { Image, ImageDTO } from 'src/types/image';
@@ -24,6 +23,11 @@ export function localeToTranslations<T>(
       [langId]: !isDefaultLanguage ? tran : tran || defaultTranslation,
     };
   }, {});
+  const region = regionsById[regionId];
+  const defaultLanguageId = region.languageIds[region.languageIds.length - 1];
+  if (!regionTranslations[defaultLanguageId]) {
+    regionTranslations[defaultLanguageId] = defaultTranslation;
+  }
 
   return regionTranslations;
 }
@@ -65,18 +69,4 @@ export const commercialDriverDTOToCommercialDriver = (
       backgroundImage,
     },
   };
-};
-
-export const imageTranslationsToReact = (
-  imageDTOTranslations: Translations<Image>,
-): Translations<ReactNode> => {
-  const imageTranslations = Object.entries(imageDTOTranslations).reduce(
-    (acc, [langId, image]) => ({
-      ...acc,
-      [langId]: <img alt={image.alt} src={image.src} />,
-    }),
-    {},
-  );
-
-  return imageTranslations;
 };

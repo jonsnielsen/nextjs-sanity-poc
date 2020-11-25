@@ -6,14 +6,8 @@ import Link from 'next/link';
 const Navigation = () => {
   return (
     <StyledHeader>
-      <Link href="/commercial-drivers/roskilde">
-        <a>Roskilde</a>
-      </Link>
-      <Link href="/commercial-drivers/other-page">
-        <a>other page</a>
-      </Link>
-      <Link href="/about">
-        <a>about</a>
+      <Link href="/commercial-drivers/black-friday">
+        <a>Black Friday</a>
       </Link>
       <LocaleSelectorWrapper>
         <LocaleSelector />

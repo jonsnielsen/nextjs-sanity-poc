@@ -3,11 +3,7 @@ import { RootState } from 'src/store';
 import { useState, useEffect } from 'react';
 import { Translations } from 'src/types/translations';
 
-export interface ITrans {
-  translations: Translations<any>; // HAS to be of type any, otherwise some place typescript complains that ReactNode cannot be used in jsx.
-}
-
-const Trans = ({ translations }: ITrans) => {
+const useTranslation = <T>(translations: Translations<T>) => {
   const { languageId } = useSelector((state: RootState) => state.settings);
   const [translation, setTranslation] = useState(translations[languageId]);
 
@@ -18,7 +14,7 @@ const Trans = ({ translations }: ITrans) => {
   }, [languageId, translations]);
   // TODO: Throw error if there is no translation (ie., if we expect that there ALWAYS should be a translation)
 
-  return translation || null;
+  return translation;
 };
 
-export default Trans;
+export default useTranslation;

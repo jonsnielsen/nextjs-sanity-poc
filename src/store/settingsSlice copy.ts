@@ -42,7 +42,7 @@ export const handleLocaleChange = (
         pathname: Router.router.pathname,
         query: Router.router.query,
       },
-      Router.asPath,
+      {},
       {
         locale: regionId,
       },

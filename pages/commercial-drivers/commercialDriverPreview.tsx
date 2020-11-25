@@ -6,38 +6,41 @@ import { CommercialDriver } from 'src/domain/CommercialDriver/commercialDriverTy
 import CommercialDriverTemplate from 'src/domain/CommercialDriver/CommercialDriverTemplate';
 import { useSelector } from 'react-redux';
 import { RootState } from 'src/store';
+import { usePreviewSubscription } from 'src/lib/sanity';
+import { commercialDriverDTOToCommercialDriver } from 'src/domain/CommercialDriver/commercialDriverUtils';
 
 type Query = {
   slug: string;
   secret: string;
 };
+const commercialDriverQuery = `*[_type == "commercialDriver" && slug.current == $slug] { slug, meta, hero } [0]`;
 
 const CommercialDriverPreviewPage = () => {
-  const [
-    commercialDriver,
-    setCommercialDriver,
-  ] = useState<CommercialDriver | null>(null);
+  // const [
+  //   commercialDriver,
+  //   setCommercialDriver,
+  // ] = useState<CommercialDriver | null>(null);
   const { regionId } = useSelector((state: RootState) => state.settings);
   const query = useRouter().query as Query;
   const { secret, slug } = query;
 
-  useEffect(() => {
-    if (!slug || !secret) {
-      return;
-    }
-    (async () => {
-      const fetchedCommercialDriver = await getCommercialDriver(
-        slug,
-        regionId,
-        secret,
-      );
-      setCommercialDriver(fetchedCommercialDriver);
-    })();
-  }, [slug, secret, regionId]);
+  const { data: commercialDriverDTO } = usePreviewSubscription(
+    commercialDriverQuery,
+    {
+      params: { slug },
+      initialData: null,
+      enabled: true,
+    },
+  );
 
-  if (!commercialDriver) {
+  if (!commercialDriverDTO) {
     return null;
   }
+
+  const commercialDriver = commercialDriverDTOToCommercialDriver(
+    commercialDriverDTO,
+    regionId,
+  );
 
   return <CommercialDriverTemplate commercialDriver={commercialDriver} />;
 };

@@ -3,8 +3,7 @@ import {
   CommercialDriverDTO,
   CommercialDriverPath,
 } from './commercialDriverTypes';
-import { gqlFetch } from '../../lib/api/api';
-import { sanityClient } from 'src/lib/sanity';
+import { getClient } from 'src/lib/sanity';
 import { RegionId } from 'src/data/region';
 import { commercialDriverDTOToCommercialDriver } from './commercialDriverUtils';
 
@@ -20,6 +19,7 @@ const commercialDriverQuery = `*[_type == "commercialDriver" && slug.current == 
 export const getAllCommercialDriverPaths = async (): Promise<
   CommercialDriverPath[]
 > => {
+  const sanityClient = getClient(false);
   const allCommercialDrivers = await sanityClient.fetch(
     commercialDriverSlugsQuery,
   );
@@ -35,7 +35,8 @@ export const getCommercialDriver = async (
   regionId: RegionId,
   previewToken?: string,
 ): Promise<CommercialDriver | null> => {
-  const commercialDriverDTO: CommercialDriverDTO = await sanityClient.fetch(
+  const client = getClient(!!previewToken);
+  const commercialDriverDTO: CommercialDriverDTO = await client.fetch(
     commercialDriverQuery,
     {
       slug,
